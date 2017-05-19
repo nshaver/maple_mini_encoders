@@ -30,7 +30,10 @@ void loop() {
   if (millis()>=next_print_ms || m1_steps!=m1_steps_last || m2_steps!=m2_steps_last){
     // the "last" variables are used to prevent spamming of the same message over and over
     Serial.println((String)"m1="+m1_steps+",m2="+m2_steps);
+    
+    // ever 10 seconds or so send the steps regardless of whether they're changed or not
     next_print_ms=millis()+10000;
+    
     m1_steps_last=m1_steps;
     m2_steps_last=m2_steps;
   }
